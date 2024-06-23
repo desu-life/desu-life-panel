@@ -1,0 +1,35 @@
+@import './base.css';
+
+@font-face {
+  font-family: SourceHanSans;
+  src: url(./SourceHanSansCN-VF.otf.woff2);
+  font-display: auto;
+}
+
+:root {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow: overlay;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 860px) {
+  :root {
+    overflow: auto;
+    scroll-snap-type: none;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+* img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
