@@ -3,25 +3,10 @@
     <n-card class="card">
       <div class="bg">
         <img :src="bgImg" draggable="false" class="bgimg" />
-        <img
-          :src="bgWave"
-          draggable="false"
-          class="bgwave"
-          v-if="theme == 'light'"
-        />
+        <img :src="bgWave" draggable="false" class="bgwave" v-if="theme == 'light'" />
         <img :src="bgWaveDark" draggable="false" class="bgwave" v-else />
-        <img
-          :src="bgWaveStroke"
-          draggable="false"
-          class="bgstroke"
-          v-if="theme == 'light'"
-        />
-        <img
-          :src="bgWaveStrokeDark"
-          draggable="false"
-          class="bgstroke"
-          v-else
-        />
+        <img :src="bgWaveStroke" draggable="false" class="bgstroke" v-if="theme == 'light'" />
+        <img :src="bgWaveStrokeDark" draggable="false" class="bgstroke" v-else />
       </div>
       <div class="content">
         <Logo />
@@ -60,21 +45,11 @@
               </n-input>
             </n-form-item-row>
           </n-form>
-          <n-button
-            type="primary"
-            block
-            secondary
-            strong
-            size="large"
-            @click="handleLogin"
-          >
+          <n-button type="primary" block secondary strong size="large" @click="handleLogin">
             登录
           </n-button>
           <p>
-            还没有账户？<n-button
-              text
-              type="primary"
-              @click="handleOpenRegister"
+            还没有账户？<n-button text type="primary" @click="handleOpenRegister"
               >立即创建</n-button
             >
           </p>
@@ -112,40 +87,40 @@
 </template>
 
 <script setup lang="ts">
-import { AlternateEmailRound, PasswordRound } from "@vicons/material";
-import { computed, onBeforeUnmount, onMounted, ref } from "vue";
-import { type FormInst, FormRules, FormItemRule, useOsTheme, useMessage } from "naive-ui";
-import { useRouter } from "vue-router";
+import { AlternateEmailRound, PasswordRound } from '@vicons/material'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { type FormInst, type FormRules, type FormItemRule, useOsTheme, useMessage } from 'naive-ui'
+import { useRouter } from 'vue-router'
 
-import Register from "@/components/register/step-1.vue";
-import Logo from "@/components/Logo.vue";
+import Register from '@/components/register/step-1.vue'
+import Logo from '@/components/Logo.vue'
 
-import bgImg from "@/assets/login/background.jpg";
-import bgWave from "@/assets/login/wave.svg";
-import bgWaveStroke from "@/assets/login/wave_stroke.svg";
-import bgWaveDark from "@/assets/login/wave_dark.svg";
-import bgWaveStrokeDark from "@/assets/login/wave_stroke_dark.svg";
+import bgImg from '@/assets/login/background.jpg'
+import bgWave from '@/assets/login/wave.svg'
+import bgWaveStroke from '@/assets/login/wave_stroke.svg'
+import bgWaveDark from '@/assets/login/wave_dark.svg'
+import bgWaveStrokeDark from '@/assets/login/wave_stroke_dark.svg'
 
-import service from "@/api";
+import service from '@/api'
 
-const router = useRouter();
-const message = useMessage();
+const router = useRouter()
+const message = useMessage()
 
-const osThemeRef = useOsTheme();
-const theme = computed(() => (osThemeRef.value === "dark" ? "dark" : "light"));
+const osThemeRef = useOsTheme()
+const theme = computed(() => (osThemeRef.value === 'dark' ? 'dark' : 'light'))
 
-const showModal = ref(false);
-const showDrawer = ref(false);
+const showModal = ref(false)
+const showDrawer = ref(false)
 
 const handleOpenRegister = () => {
   if (window.innerWidth < 800) {
-    showDrawer.value = true;
+    showDrawer.value = true
   } else {
-    showModal.value = true;
+    showModal.value = true
   }
-};
+}
 
-const loginFormRef = ref<FormInst | null>(null);
+const loginFormRef = ref<FormInst | null>(null)
 
 const rules: FormRules = {
   mailAddress: [
@@ -153,105 +128,105 @@ const rules: FormRules = {
       required: true,
       validator(rule: FormItemRule, value: string) {
         if (!value) {
-          return new Error("请输入邮箱");
+          return new Error('请输入邮箱')
         }
-        return true;
+        return true
       },
-      trigger: ["blur", "input"],
+      trigger: ['blur', 'input']
     },
     {
       validator(rule: FormItemRule, value: string) {
         if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value) && value) {
-          return new Error("请输入正确的邮箱格式");
+          return new Error('请输入正确的邮箱格式')
         }
-        return true;
+        return true
       },
-      trigger: "blur",
-    },
+      trigger: 'blur'
+    }
   ],
   password: [
     {
       required: true,
-      message: "请输入密码",
-    },
-  ],
-};
+      message: '请输入密码'
+    }
+  ]
+}
 
 const loginFormModel = ref({
-  mailAddress: "",
-  password: "",
-});
+  mailAddress: '',
+  password: ''
+})
 
 const handleLogin = (e: MouseEvent) => {
-  e.preventDefault();
+  e.preventDefault()
   loginFormRef.value?.validate((errors) => {
     if (!errors) {
-      service.post("/login", 
-        JSON.stringify(loginFormModel.value),
-        {
+      service
+        .post('/login', JSON.stringify(loginFormModel.value), {
           headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
           }
-        }
-      ).then((res) => {
-        router.push("/user");
-      }).catch((err) => {
-        // console.error(err)
-        message.error("登录失败，请检查用户名或密码");
-      });
+        })
+        .then((res) => {
+          router.push('/user')
+        })
+        .catch((err) => {
+          // console.error(err)
+          message.error('登录失败，请检查用户名或密码')
+        })
     } else {
-      console.log(errors);
+      console.log(errors)
     }
-  });
-};
+  })
+}
 
 const handleResize = () => {
   if (window.innerWidth < 800 && showModal.value) {
-    showModal.value = false;
+    showModal.value = false
     setTimeout(() => {
-      showDrawer.value = true;
-    }, 100);
+      showDrawer.value = true
+    }, 100)
   }
   if (window.innerWidth >= 800 && showDrawer.value) {
-    showDrawer.value = false;
+    showDrawer.value = false
     setTimeout(() => {
-      showModal.value = true;
-    }, 100);
+      showModal.value = true
+    }, 100)
   }
-};
+}
 
 const closeDrawer = () => {
-  showDrawer.value = false;
-};
+  showDrawer.value = false
+}
 
 // 手机返回键关闭抽屉
 const handleBack = (event: any) => {
   if (showDrawer.value && event.state !== null) {
-    showDrawer.value = false;
+    showDrawer.value = false
   }
-};
+}
 
 onMounted(() => {
-  window.addEventListener("resize", handleResize);
+  window.addEventListener('resize', handleResize)
   // 检查是否支持 history.pushState
   if (window.history && typeof window.history.pushState === 'function') {
-    history.pushState(null, "", document.URL);
-    window.addEventListener("popstate", handleBack, false);
+    history.pushState(null, '', document.URL)
+    window.addEventListener('popstate', handleBack, false)
   }
-});
+})
 
 onBeforeUnmount(() => {
-  window.removeEventListener("resize", handleResize);
+  window.removeEventListener('resize', handleResize)
   if (window.history && typeof window.history.pushState === 'function') {
-    window.removeEventListener("popstate", handleBack);
+    window.removeEventListener('popstate', handleBack)
   }
-});
+})
 </script>
 
 <style lang="scss" scoped>
 .modal {
-  width: clamp(780px, 70%, 1200px);
-  height: clamp(500px, 80vh, 90vh);
+  width: clamp(820px, 70%, 1100px);
+  height: clamp(500px, 90vh, 640px);
   background-color: #fff;
   border-radius: 24px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -265,8 +240,8 @@ onBeforeUnmount(() => {
   align-items: center;
   background-color: #e9eef2;
   .card {
-    width: clamp(780px, 70%, 1200px);
-    height: clamp(500px, 80%, 90vh);
+    width: clamp(820px, 70%, 1100px);
+    height: clamp(500px, 90vh, 640px);
     background-color: #fff;
     border-radius: 24px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -340,7 +315,7 @@ onBeforeUnmount(() => {
 
 @media screen and (max-width: 1200px) {
   .bgstroke {
-    right: -11vw !important;
+    right: -14vw !important;
   }
 }
 

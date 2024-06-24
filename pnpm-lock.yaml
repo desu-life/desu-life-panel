@@ -8,9 +8,15 @@ dependencies:
   '@vicons/material':
     specifier: ^0.12.0
     version: 0.12.0
+  animate.css:
+    specifier: ^4.1.1
+    version: 4.1.1
   axios:
     specifier: ^1.7.2
     version: 1.7.2
+  canvas-confetti:
+    specifier: ^1.9.3
+    version: 1.9.3
   naive-ui:
     specifier: ^2.38.2
     version: 2.38.2(vue@3.4.30)
@@ -29,6 +35,9 @@ dependencies:
   vue-router:
     specifier: ^4.3.3
     version: 4.4.0(vue@3.4.30)
+  vue-turnstile:
+    specifier: ^1.0.9
+    version: 1.0.9(vue@3.4.30)
 
 devDependencies:
   '@rushstack/eslint-patch':
@@ -1296,6 +1305,10 @@ packages:
       uri-js: 4.4.1
     dev: true
 
+  /animate.css@4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
+    dev: false
+
   /ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
@@ -1407,6 +1420,10 @@ packages:
   /caniuse-lite@1.0.30001636:
     resolution: {integrity: sha512-bMg2vmr8XBsbL6Lr0UHXy/21m84FTxDLWn2FSqMd5PrlbMxwJlQnC2YWYxVgp66PZE+BBNF2jYQUBKCo1FDeZg==}
     dev: true
+
+  /canvas-confetti@1.9.3:
+    resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
+    dev: false
 
   /chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -2871,6 +2888,14 @@ packages:
       semver: 7.6.2
       typescript: 5.4.5
     dev: true
+
+  /vue-turnstile@1.0.9(vue@3.4.30):
+    resolution: {integrity: sha512-3kvvI1EPyzUJGtWTcWmel7B45J/TZb2UCuNZyOrJCG3KCtG+U+cHDKilPyqxsMJfQ9BppBOkh8SEWbUA9yYCIw==}
+    peerDependencies:
+      vue: ^3.2.45
+    dependencies:
+      vue: 3.4.30(typescript@5.4.5)
+    dev: false
 
   /vue@3.4.30(typescript@5.4.5):
     resolution: {integrity: sha512-NcxtKCwkdf1zPsr7Y8+QlDBCGqxvjLXF2EX+yi76rV5rrz90Y6gK1cq0olIhdWGgrlhs9ElHuhi9t3+W5sG5Xw==}
