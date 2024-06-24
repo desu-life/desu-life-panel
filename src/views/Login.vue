@@ -20,10 +20,10 @@
             :rules="rules"
             :model="loginFormModel"
           >
-            <n-form-item-row path="mailAddress">
+            <n-form-item-row path="email">
               <n-input
                 placeholder="请输入邮箱"
-                v-model:value="loginFormModel.mailAddress"
+                v-model:value="loginFormModel.email"
                 @keydown.enter.prevent
               >
                 <template #prefix>
@@ -123,7 +123,7 @@ const handleOpenRegister = () => {
 const loginFormRef = ref<FormInst | null>(null)
 
 const rules: FormRules = {
-  mailAddress: [
+  email: [
     {
       required: true,
       validator(rule: FormItemRule, value: string) {
@@ -153,7 +153,7 @@ const rules: FormRules = {
 }
 
 const loginFormModel = ref({
-  mailAddress: '',
+  email: '',
   password: ''
 })
 
@@ -162,7 +162,7 @@ const handleLogin = (e: MouseEvent) => {
   loginFormRef.value?.validate((errors) => {
     if (!errors) {
       service
-        .post('/login', JSON.stringify(loginFormModel.value), {
+        .post('/User/Login', JSON.stringify(loginFormModel.value), {
           headers: {
             'Content-Type': 'application/json'
           }

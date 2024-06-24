@@ -17,10 +17,7 @@
             </n-input>
           </n-form-item>
           <n-form-item path="cftoken">
-            <!-- <vue-turnstile
-                site-key="0x4AAAAAAARM2HiXd91R578H"
-                v-model="formModel.cftoken"
-              /> -->
+            <vue-turnstile site-key="0x4AAAAAAARM2HiXd91R578H" v-model="formModel.cftoken" />
             <!-- <vue-turnstile site-key="0x4AAAAAAARH6Wmm-J-vlqIu" v-model="formModel.cftoken" /> -->
           </n-form-item>
           <n-form-item>
