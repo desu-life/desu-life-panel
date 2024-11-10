@@ -33,6 +33,14 @@ const router = createRouter({
       }
     },
     {
+      name: 'LinkOsu',
+      path: '/linkOsu',
+      component: () => import('../views/LinkOsu.vue'),
+      meta: {
+        title: '第三方登录'
+      }
+    },
+    {
       name: '404',
       path: '/:pathMatch(.*)*',
       component: () => import('../views/404.vue'),
@@ -45,7 +53,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const userStore = useUserStore()
-  if (!userStore.isAuthenicated() && to.name !== 'Login') {
+  if (!userStore.isAuthenticated() && to.name !== 'Login' && to.name !== 'LinkOsu') {
     return { name: 'Login' }
   }
 })

@@ -13,46 +13,57 @@
         <div class="form">
           <h3>欢迎回来</h3>
           <h2>登录到 DESU.Life</h2>
-          <n-form
-            size="large"
-            :show-label="false"
-            ref="loginFormRef"
-            :rules="rules"
-            :model="loginFormModel"
-          >
-            <n-form-item-row path="email">
-              <n-input
-                placeholder="请输入邮箱"
-                v-model:value="loginFormModel.email"
-                @keydown.enter.prevent
+          <a-tabs class="tab">
+            <a-tab-pane key="email" title="邮箱/密码登录" style="color:#63e2b7};">
+              <n-form
+                size="large"
+                :show-label="false"
+                ref="loginFormRef"
+                :rules="rules"
+                :model="loginFormModel"
               >
-                <template #prefix>
-                  <n-icon :component="AlternateEmailRound" />
-                </template>
-              </n-input>
-            </n-form-item-row>
-            <n-form-item-row path="password">
-              <n-input
-                type="password"
-                show-password-on="click"
-                placeholder="请输入密码"
-                v-model:value="loginFormModel.password"
-                @keydown.enter.prevent
-              >
-                <template #prefix>
-                  <n-icon :component="PasswordRound" />
-                </template>
-              </n-input>
-            </n-form-item-row>
-          </n-form>
-          <n-button type="primary" block secondary strong size="large" @click="handleLogin">
-            登录
-          </n-button>
-          <p>
-            还没有账户？<n-button text type="primary" @click="handleOpenRegister"
+                <n-form-item-row path="email">
+                  <n-input
+                    placeholder="请输入邮箱"
+                    v-model:value="loginFormModel.email"
+                    @keydown.enter.prevent
+                  >
+                    <template #prefix>
+                      <n-icon :component="AlternateEmailRound" />
+                    </template>
+                  </n-input>
+                </n-form-item-row>
+                <n-form-item-row path="password">
+                  <n-input
+                    type="password"
+                    show-password-on="click"
+                    placeholder="请输入密码"
+                    v-model:value="loginFormModel.password"
+                    @keydown.enter.prevent
+                  >
+                    <template #prefix>
+                      <n-icon :component="PasswordRound" />
+                    </template>
+                  </n-input>
+                </n-form-item-row>
+              </n-form>
+              <n-button type="primary" block secondary strong size="large" @click="handleLogin">
+                登录
+              </n-button>
+              <p>
+                还没有账户？<n-button text type="primary" @click="handleOpenRegister"
               >立即创建</n-button
-            >
-          </p>
+              >
+              </p>
+            </a-tab-pane>
+            <a-tab-pane key="oauth" title="OAuth 2登录" style="color:#63e2b7};">
+              <div class="oauth-buttons">
+                <img src="../assets/login/osu.svg" width="80" height="80"  v-on:click="handleOsuLogin"  alt="osu! 认证登录"/>
+              </div>
+            </a-tab-pane>
+          </a-tabs>
+
+
         </div>
       </div>
     </n-card>
@@ -156,6 +167,22 @@ const loginFormModel = ref({
   email: '',
   password: ''
 })
+const handleOsuLogin = () => {
+  service
+    .get('/ThirdPartyOAuth2/RedirectOsuLogin', {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      window.location.href = res.data.data;
+    })
+    .catch((err) => {
+      message.error('获取认证链接失败')
+    })
+
+
+}
 
 const handleLogin = (e: MouseEvent) => {
   e.preventDefault()
@@ -246,6 +273,7 @@ onBeforeUnmount(() => {
     border-radius: 24px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
+
     .content {
       width: 58%;
       height: 100%;
@@ -262,6 +290,7 @@ onBeforeUnmount(() => {
         width: clamp(350px, 70%, 500px);
         padding: 40px;
         padding-bottom: 11vh;
+
         h2 {
           font-size: 1.7rem;
           font-weight: 600;
@@ -271,6 +300,11 @@ onBeforeUnmount(() => {
           margin-top: 1rem;
         }
       }
+    }
+    .oauth-buttons{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .bg {
       -moz-user-select: none;

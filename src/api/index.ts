@@ -1,5 +1,6 @@
 import axios, { AxiosError, type AxiosResponse } from 'axios'
 import config from '../config'
+import { useUserStore } from '@/stores/userinfo'
 // import { useRouter } from 'vue-router'
 
 // const router = useRouter();
@@ -10,10 +11,19 @@ const service = axios.create({
   timeout: 10000
 })
 
+let userStore: any = null
 // 创建请求拦截
 service.interceptors.request.use(
   (config: any) => {
-    // 在发送请求之前做些什么
+    if (userStore === null) {
+      userStore = useUserStore()
+    }
+    // 如果 token 存在，则在请求头中添加 Authorization
+    if (userStore.isAuthenticated()) {
+      config.headers['Authorization'] = `Bearer ${userStore.accessToken}`
+    }
+
+    // 在发送请求之前可以做其他操作
     return config
   },
   (error: any) => {
