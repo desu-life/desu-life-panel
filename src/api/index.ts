@@ -1,6 +1,6 @@
 import axios, { AxiosError, type AxiosResponse } from 'axios'
 import config from '../config'
-import { useUserStore } from '@/stores/userinfo'
+import { useUserStore } from '@/stores/modules/user/userinfo'
 // import { useRouter } from 'vue-router'
 
 // const router = useRouter();

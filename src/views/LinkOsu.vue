@@ -2,7 +2,7 @@
 
 import { useRouter } from 'vue-router'
 import { useMessage } from 'naive-ui'
-import { useUserStore } from '@/stores/userinfo'
+import { useUserStore } from '@/stores/modules/user/userinfo'
 
 const router = useRouter()
 const message = useMessage()

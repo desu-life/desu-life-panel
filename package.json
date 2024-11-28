@@ -25,7 +25,8 @@
     "unplugin-vue-components": "^0.27.0",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3",
-    "vue-turnstile": "^1.0.9"
+    "vue-turnstile": "^1.0.9",
+    "vue-i18n": "^9.13.1"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
