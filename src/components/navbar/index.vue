@@ -149,6 +149,7 @@ import { Message } from '@arco-design/web-vue'
 import { useDark, useFullscreen, useToggle } from '@vueuse/core'
 import { computed, inject, ref } from 'vue'
 import MessageBox from '../message-box/index.vue'
+import useUser from '@/hooks/user'
 
 const appStore = useAppStore()
 const userStore = useUserStore()

@@ -11,12 +11,14 @@ import ArcoVue from '@arco-design/web-vue';
 // 引入 Arco 的样式文件
 import '@arco-design/web-vue/dist/arco.css';
 import { generate, getRgbStr } from "@arco-design/color";
+import i18n from "@/locale";
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
 app.use(ArcoVue);
+app.use(i18n)
 app.mount('#app')
 
 // 切换Arco Design主题色
