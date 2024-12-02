@@ -2,7 +2,7 @@
 
 import { useRouter } from 'vue-router'
 import { useMessage } from 'naive-ui'
-import { useUserStore } from '@/stores/modules/user/userinfo'
+import { useUserStore } from '@/store/modules/user/userinfo'
 
 const router = useRouter()
 const message = useMessage()
@@ -17,7 +17,7 @@ if (code) {
   userStore.loginByOsu(code).then((result) => {
     if (result.success) {
       message.success(result.message)
-      router.push('/index')
+      router.push('/user/accounts')
     } else {
       message.error(result.message)
       router.push('/login')

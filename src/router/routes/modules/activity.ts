@@ -1,5 +1,5 @@
 import { DEFAULT_LAYOUT } from '../base'
-import { AppRouteRecordRaw } from '../types'
+import type {AppRouteRecordRaw} from "@/router/routes/types";
 // 活动模块的定义，用于菜单渲染和路由
 const ACTIVITY: AppRouteRecordRaw = {
   path: '/activity',

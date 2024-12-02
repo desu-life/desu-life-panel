@@ -1,6 +1,6 @@
 import { createPinia } from 'pinia'
-import useUserStore from './modules/user'
-import useAppStore from './modules/app'
+import useUserStore from '@/store/modules/user/userinfo'
+import useAppStore from '@/store/modules/app'
 const pinia = createPinia()
 
 export { useAppStore, useUserStore }

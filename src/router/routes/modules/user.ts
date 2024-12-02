@@ -1,5 +1,6 @@
 import { DEFAULT_LAYOUT } from '../base'
-import { AppRouteRecordRaw } from '../types'
+import type {AppRouteRecordRaw} from "@/router/routes/types";
+
 // 用户模块的定义，用于菜单渲染和路由
 const USER: AppRouteRecordRaw = {
   path: '/user',

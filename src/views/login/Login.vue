@@ -58,7 +58,7 @@
             </a-tab-pane>
             <a-tab-pane key="oauth" title="OAuth 2登录" style="color:#63e2b7};">
               <div class="oauth-buttons">
-                <img src="../assets/login/osu.svg" width="80" height="80"  v-on:click="handleOsuLogin"  alt="osu! 认证登录"/>
+                <img src="../../assets/login/osu.svg" width="80" height="80" v-on:click="handleOsuLogin" alt="osu! 认证登录"/>
               </div>
             </a-tab-pane>
           </a-tabs>

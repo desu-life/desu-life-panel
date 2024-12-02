@@ -63,7 +63,7 @@ export const useUserStore
         // 保存到 localStorage
         localStorage.setItem('user_info', JSON.stringify(userinfo.value))
         if (accessToken.value) {
-          localStorage.setItem('auth_token', accessToken.value)
+          localStorage.setItem('access_token', accessToken.value)
         }
         if (refreshToken.value) {
           localStorage.setItem('refresh_token', refreshToken.value)
@@ -82,6 +82,18 @@ export const useUserStore
   }
 
   function isAuthenticated() {
+    // 如果store中没有用户信息，或者访问令牌不存在，则从LocalStorage获取一次
+    if (!userinfo.value?.name || !accessToken.value) {
+      const userInfoStr = localStorage.getItem('user_info')
+      const accessTokenStr = localStorage.getItem('access_token')
+      console.log('isAuthenticated:', userInfoStr, accessTokenStr)
+      if (userInfoStr) {
+        userinfo.value = JSON.parse(userInfoStr)
+      }
+      if (accessTokenStr) {
+        accessToken.value = accessTokenStr
+      }
+    }
     return !!userinfo.value?.name && !!accessToken.value
   }
 
@@ -97,3 +109,5 @@ export const useUserStore
   return { userinfo, accessToken, refreshToken, login, loginByOsu, isAuthenticated, logout }
 
 })
+
+export default useUserStore

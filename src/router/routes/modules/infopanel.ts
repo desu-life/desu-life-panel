@@ -1,3 +1,6 @@
+import { DEFAULT_LAYOUT } from '../base'
+import type {AppRouteRecordRaw} from "@/router/routes/types";
+
 // InfoPanel模块的定义，用于菜单渲染和路由
 const INFOPANEL: AppRouteRecordRaw = {
   path: '/infopanel',

@@ -1,7 +1,7 @@
 <script lang="tsx">
 // @ts-nocheck
 
-import { useAppStore } from '@/stores'
+import { useAppStore } from '@/store'
 import { openWindow, regexUrl } from '@/utils'
 import { listenerRouteChange } from '@/utils/route-listener'
 import { compile, computed, defineComponent, h, ref } from 'vue'
