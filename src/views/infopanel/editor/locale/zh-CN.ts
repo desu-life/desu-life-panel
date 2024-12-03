@@ -1,3 +1,3 @@
 export default {
-  'menu.dashboard.monitor': '实时监控',
+  'menu.infopanel.editor': 'InfoPanel编辑器',
 }

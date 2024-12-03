@@ -23,7 +23,7 @@
                   alt="logo"
                   src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
                 />
-                <a-typography-title>Vue Admin Arco</a-typography-title>
+                <a-typography-title>desu.life</a-typography-title>
               </a-space>
             </div>
             <Menu />

@@ -1,3 +1,3 @@
 export default {
-  'menu.dashboard.monitor': '实时监控',
+  'menu.activity.my': '我的活动',
 }

@@ -2,11 +2,11 @@ import { DEFAULT_LAYOUT } from '../base'
 import type {AppRouteRecordRaw} from "@/router/routes/types";
 // 设备模块的定义，用于菜单渲染和路由
 const DEVICE: AppRouteRecordRaw = {
-  path: '/profile',
-  name: 'profile',
+  path: '/device',
+  name: 'device',
   component: DEFAULT_LAYOUT,
   meta: {
-    locale: 'menu.profile',
+    locale: 'menu.device',
     requiresAuth: true,
     icon: 'icon-file',
     order: 1,
